@@ -55,7 +55,6 @@
         }
         function pop_QualifiedAreas_0(feature, layer) {
         }
-
         function style_QualifiedAreas_0_0() {
             return {
                 pane: 'pane_QualifiedAreas_0',
@@ -104,10 +103,13 @@
                         <th scope="row">Address</th>\
                         <td>' + (feature.properties['FullAdd'] !== null ? Autolinker.link(String(feature.properties['FullAdd'])) : '') + '</td>\
                     </tr>\
+					<tr>\
+                        <th scope="row">Congressional District</th>\
+                        <td>' + (feature.properties['CD114FP'] !== null ? Autolinker.link(String(feature.properties['CD114FP'])) : '') + '</td>\
+                    </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
-
         function style_GeocodedSiteListsFY17_FY18_1_0(feature) {
             switch(String(feature.properties['Agency'])) {
                 case 'DPH':
@@ -159,7 +161,6 @@
           }
         }
 		
-
         map.createPane('pane_GeocodedSiteListsFY17_FY18_1');
         map.getPane('pane_GeocodedSiteListsFY17_FY18_1').style.zIndex = 401;
         map.getPane('pane_GeocodedSiteListsFY17_FY18_1').style['mix-blend-mode'] = 'normal';
@@ -190,11 +191,13 @@
         var baseMaps = {};
         L.control.layers(baseMaps,{'GeocodedSiteListsFY17_FY18<br /><table><tr><td style="text-align: center;"><img src="legend/GeocodedSiteListsFY17_FY18_1_DPH0.png" /></td><td>DPH</td></tr><tr><td style="text-align: center;"><img src="legend/GeocodedSiteListsFY17_FY18_1_HealthMPowers1.png" /></td><td>HealthMPowers</td></tr><tr><td style="text-align: center;"><img src="legend/GeocodedSiteListsFY17_FY18_1_OpenHandAtlanta2.png" /></td><td>Open Hand Atlanta</td></tr><tr><td style="text-align: center;"><img src="legend/GeocodedSiteListsFY17_FY18_1_UGA3.png" /></td><td>UGA</td></tr><tr><td style="text-align: center;"><img src="legend/GeocodedSiteListsFY17_FY18_1_4.png" /></td><td></td></tr></table>': layer_GeocodedSiteListsFY17_FY18_1,'<img src="legend/QualifiedAreas_0.png" /> Qualified Areas': layer_QualifiedAreas_0,},{collapsed:false}).addTo(map);
         setBounds();
+		
         map.addControl(new L.Control.Search({
             layer: layer_GeocodedSiteListsFY17_FY18_1,
             initial: false,
             hideMarkerOnCollapse: true,
-            propertyName: 'Year'}));
+            propertyName: 'Name_of_Lo'}));
+			
         </script>
     </body>
 </html>
