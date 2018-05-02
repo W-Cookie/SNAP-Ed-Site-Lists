@@ -35,7 +35,7 @@
         <script src="js/Control.OSMGeocoder.js"></script>
         <script src="js/leaflet-search.js"></script>
         <script src="data/QualifiedAreas_0.js"></script>
-        <script src="data/GeocodedSiteListsFY17_FY18_1.js"></script>
+        <script src="data/GeocodedSiteListsFY17_FY18_2.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
@@ -84,10 +84,10 @@
         function pop_GeocodedSiteListsFY17_FY18_1(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">Agency</th>\
-                        <td>' + (feature.properties['Agency'] !== null ? Autolinker.link(String(feature.properties['Agency'])) : '') + '</td>\
+                        <th scope="row">Name</th>\
+                        <td>' + (feature.properties['Name_of_Lo'] !== null ? Autolinker.link(String(feature.properties['Name_of_Lo'])) : '') + '</td>\
                     </tr>\
-                    <tr>\
+					<tr>\
                         <th scope="row">Project</th>\
                         <td>' + (feature.properties['Project'] !== null ? Autolinker.link(String(feature.properties['Project'])) : '') + '</td>\
                     </tr>\
@@ -96,22 +96,14 @@
                         <td>' + (feature.properties['Name_of_Lo'] !== null ? Autolinker.link(String(feature.properties['Name_of_Lo'])) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Year</th>\
-                        <td>' + (feature.properties['Year'] !== null ? Autolinker.link(String(feature.properties['Year'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <th scope="row">Address</th>\
-                        <td>' + (feature.properties['FullAdd'] !== null ? Autolinker.link(String(feature.properties['FullAdd'])) : '') + '</td>\
-                    </tr>\
-					<tr>\
-                        <th scope="row">Congressional District</th>\
-                        <td>' + (feature.properties['CD114FP'] !== null ? Autolinker.link(String(feature.properties['CD114FP'])) : '') + '</td>\
+                        <td>' + (feature.properties['search_add'] !== null ? Autolinker.link(String(feature.properties['search_add'])) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
         function style_GeocodedSiteListsFY17_FY18_1_0(feature) {
-            switch(String(feature.properties['Agency'])) {
+            switch(String(feature.properties['Agency_name'])) {
                 case 'DPH':
                     return {
                 pane: 'pane_GeocodedSiteListsFY17_FY18_1',
@@ -175,8 +167,8 @@
                 };
                 return L.circleMarker(latlng, {radius: 6, 
                                                 fillOpacity: 0.8, 
-                                                color: getColor(String(feature.properties['Agency'])), 
-                                                fillColor: getColor(String(feature.properties['Agency'])), 
+                                                color: getColor(String(feature.properties['Agency_name'])), 
+                                                fillColor: getColor(String(feature.properties['Agency_name'])), 
                                                 weight: 1,});
             },
         });
